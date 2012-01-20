@@ -32,7 +32,7 @@ Requires:
 
 
 1: If this is not in the repos yet, it's easy to build 
-(tested Ubuntu 11.04 and FreeBSD 9):
+(tested Ubuntu 11.04 and mac):
 `curl -O http://www.erlang.org/download/otp_src_R15B.tar.gz
 tar xvvzf otp_src_R15B.tar.gz
 ./configure
