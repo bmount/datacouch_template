@@ -1,0 +1,28 @@
+%% -*- tab-width: 4;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%% ex: ft=erlang ts=4 sw=4 et
+
+{variables, [{appid, "myapp"},
+             {node, "{{node}}"},
+             {crash_dump, "{{crash_dump}}"},
+             {rel_vsn, "{{rel_vsn}}"},
+             {erts_vsn, "{{erts_vsn}}"}
+    ]}.
+
+
+{template, "datacouch.Makefile", "Makefile"}.
+{template, "datacouch.gitignore", ".gitignore"}.
+{template, "datacouch.rebar.config", "rebar.config"}.
+{template, "datacouch.md", "README.md"}.
+
+{template, "datacouch.rel/datacouch.config", "rel/{{appid}}.config"}.
+{template, "datacouch.rel/reltool.config", "rel/reltool.config"}.
+{file, "datacouch.rel/files/datacouch", "rel/files/{{appid}}"}.
+{chmod, 8#744, "rel/files/{{appid}}"}.
+{file, "datacouch.rel/files/erl", "rel/files/erl"}.
+{chmod, 8#744, "rel/files/erl"}.
+{file, "datacouch.rel/files/default.ini", "rel/files/default.ini"}.
+{file, "datacouch.rel/files/local.ini", "rel/files/local.ini"}.
+{file, "datacouch.rel/files/nodetool", "rel/files/nodetool"}.
+{chmod, 8#744, "rel/files/nodetool"}.
+{file, "datacouch.rel/files/app.config", "rel/files/app.config"}.
+{template, "datacouch.rel/files/vm.args", "rel/files/vm.args"}.
