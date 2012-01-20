@@ -1,4 +1,5 @@
-# A template for setting up a Datacouch in its own environment
+## A template for setting up a Datacouch
+
 
 This is a little tool to build a Datacouch. It should/will give you:
 
