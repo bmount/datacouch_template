@@ -19,7 +19,9 @@ fi
 # Make sure CWD is set to runner base dir
 cd $RUNNER_BASE_DIR
 
-source ../../datacouch.conf
+# kind of feel like this might be preferable where supported
+# swap out exec command from start script and enable this
+# source ../../datacouch.conf
 
 # Make sure log directory exists
 mkdir -p $RUNNER_LOG_DIR

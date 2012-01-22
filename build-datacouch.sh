@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 source ./datacouch.conf
 
@@ -78,7 +78,10 @@ node node_modules/couchapp/bin.js push db.js http://localhost:$DC_BUILD_PORT/dat
 node node_modules/couchapp/bin.js push users.js http://localhost:$DC_BUILD_PORT/datacouch-users
 node node_modules/couchapp/bin.js push analytics.js http://localhost:$DC_BUILD_PORT/datacouch-analytics
 
-curl -X PUT http://localhost:$DC_BUILD_PORT/_config/admins/$DATACOUCH_ADMIN_NAME -d $DATACOUCH_ADMIN_PASSWORD
+
+curl -X PUT http://localhost:$DC_BUILD_PORT/_config/admins/$DATACOUCH_ADMIN_NAME -d \"$DATACOUCH_ADMIN_PASSWORD\""
+
+sleep 2
 
 echo "restarting (Data)CouchDB..."
 $DC_SETUP_DIR/rel/datacouch/bin/datacouch restart

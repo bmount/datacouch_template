@@ -1,3 +1,4 @@
 #!/bin/sh
 
+source ./datacouch.conf
 rel/datacouch/bin/datacouch start
