@@ -19,8 +19,7 @@ fi
 # Make sure CWD is set to runner base dir
 cd $RUNNER_BASE_DIR
 
-# Load datacouch conf at start
-source ../../datacouch.conf
+source ../../../datacouch.conf
 
 # Make sure log directory exists
 mkdir -p $RUNNER_LOG_DIR
@@ -143,7 +142,6 @@ case "$1" in
         do
             sleep 1
         done
-        kill $(ps aux | grep "[n]ode ../../datacouch/processors" | awk '{print $2}')
         ;;
 
     restart)
