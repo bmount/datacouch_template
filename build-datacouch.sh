@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 source ./datacouch.conf
 
@@ -95,5 +95,6 @@ echo "
     127.0.0.1  datacouch.dev 
     127.0.0.1  couchdb.dev 
 
-
+    Visit your new couch at http://localhost:5914/_utils and the app
+    at http://datacouch.dev:5914
     "

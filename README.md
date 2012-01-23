@@ -1,24 +1,31 @@
 ## A template for setting up a Datacouch
 
 
-This is a little tool to build a Datacouch. It should/will give you:
+This is a refuge-based rebar template for building Datacouches. 
+It will give you:
 
  - a geocouch enabled Apache CouchDB 1.3 running on port 5914
  - preconfigured settings, proxies etc
  - all the node stuff running as daemons managed within
    the couch, logging to the couch logs, and shutting down when
    they fail too much too quickly, or when you shut down the couch.
+ - a relative, moveable build with no hard paths
  - the datacouch app
  - a bunch of other apps
 
-If you have Erlang, Node, and rebar installed, clone and enter this 
-repo, pick a username and password, then:
+Don't use this live without disabling fakelogin (at a minimum).
 
-`./build-datacouch.sh` (maybe chmod +x build-datacouch.sh first)
+Once you have Erlang, Node, and rebar installed, clone and enter this 
+repo, pick a username and password (these are for a new couch on port
+5914, not any existing server), then:
 
-Do something like what's on the last line of output above, about adding
-this line to your /etc/hosts: `127.0.0.1  datacouch.dev`, same for 
-couchdb.dev. then open your browser to `http://datacouch.dev:5914`.
+`./build-datacouch.sh`
+
+To start and stop the server and node servers, use `./start` and `./stop`.
+
+Do something like what's on the last line of output of the build script above, 
+about adding this line to your /etc/hosts: `127.0.0.1  datacouch.dev`, 
+same for couchdb.dev. then open your browser to `http://datacouch.dev:5914`.
 
 Requires:
 
