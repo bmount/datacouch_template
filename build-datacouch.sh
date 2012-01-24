@@ -10,29 +10,47 @@ if [ -z "$DATACOUCH_ADMIN_PASSWORD" ]
 then
     echo "
     
-    Set an admin name and passowrd in the datacouch.conf file
-    should look like:
+    Set an admin name and passowrd in the datacouch.conf file,
+    it should look like:
 
-    DATACOUCH_ADMIN_NAME=yourusername
-    DATACOUCH_ADMIN_PASSWORD=unguessable
+    DATACOUCH_ADMIN_NAME=\"yourusername\"
+    DATACOUCH_ADMIN_PASSWORD=\"unguessable\"
     
+    This a new name for a new db, it doesn't have
+    to be the same as other couches on your system,
+    if any are installed.
+
     "
     
     exit
 fi
 
-if [ ! -d "$HOME/.rebar" ]
+DC_REBAR_VSN=`which rebar`
+
+if [ -z "$DC_REBAR_VSN" ]
 then
     echo "
     
-    No rebar... 
-    available via homebrew ('brew install rebar') or
-    from https://github.com/basho/rebar
+    adding rebar... if you want to
+    keep this around post install, copy 
+    `pwd`/rebar to /usr/local/bin...
     
     "
-    
-    exit
-elif [ ! -d "$HOME/.rebar/templates" ]
+    git clone git://github.com/basho/rebar.git
+    cd rebar
+    ./bootstrap
+    chmod +x rebar
+    PATH=$PATH:`pwd`
+fi
+
+cd $DC_SETUP_DIR
+
+if [ ! -d "$HOME/.rebar" ]
+then
+    mkdir "$HOME/.rebar"
+fi
+
+if [ ! -d "$HOME/.rebar/templates" ]
 then
     mkdir "$HOME/.rebar/templates"
 fi
@@ -57,6 +75,14 @@ echo "getting datacouch..."
 git clone https://github.com/bvmou/datacouch.git
 
 rebar create template=datacouch appid=datacouch
+
+echo "
+
+    YOU MAY GET AN ERROR ABOUT THE README, FOR
+    CONTENTS OF ORIGINAL README, SEE LOWER 2/3
+    OF THE CURRENT ONE. ERROR IS INCONSEQUENTIAL
+
+    "
 
 make rel
 

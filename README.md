@@ -1,7 +1,7 @@
 ## A template for setting up a Datacouch
 
 
-This is a refuge-based rebar template for building Datacouches. 
+This is a refuge-based template for building Datacouches. 
 It will give you:
 
  - a geocouch enabled Apache CouchDB 1.3 running on port 5914
@@ -15,17 +15,20 @@ It will give you:
 
 Don't use this live without disabling fakelogin (at a minimum).
 
-Once you have Erlang, Node, and rebar installed, clone and enter this 
+Once you have Erlang and Node installed, clone and enter this 
 repo, pick a username and password (these are for a new couch on port
 5914, not any existing server), then:
 
 `./build-datacouch.sh`
 
-To start and stop the server and node servers, use `./start` and `./stop`.
+To start and stop the couch server and node servers, use `./start` and `./stop`.
 
 Do something like what's on the last line of output of the build script above, 
 about adding this line to your /etc/hosts: `127.0.0.1  datacouch.dev`, 
 same for couchdb.dev. then open your browser to `http://datacouch.dev:5914`.
+Create an app at http://dev.twitter.com for the oauth tokens to put into your
+`datacouch.conf` file. To get started you can also log in to
+http://datacouch.dev:5914/fakelogin without setting up the twitter credentials.
 
 Requires:
 
@@ -33,25 +36,26 @@ Requires:
  - a recent [erlang](http://www.erlang.org/). 
    On Mac: `brew install erlang`
    Otherwise<sup>1</sup>
- - [rebar](https://github.com/basho/rebar)
-   On Mac: `brew install rebar`
-   Otherwise<sup>2</sup>
 
 
 1: If this is not in the repos yet, it's easy to build 
-(tested Ubuntu 11.04 and mac):
+(tested Ubuntu 11.04):
 `curl -O http://www.erlang.org/download/otp_src_R15B.tar.gz
-tar xvvzf otp_src_R15B.tar.gz
-./configure
-make
+&& tar xvvzf otp_src_R15B.tar.gz`, enter directory, then `
+./configure &&
+make &&
 sudo make install`
 
-2: Clone or download rebar, then 
+Rebar:
+
+The build script sets up rebar in your user path if you don't
+have it installed. If you want to install separately, clone or 
+download rebar, then 
+
 `cd rebar &&
 ./bootstrap &&
 chmod +x rebar &&
 cp rebar /usr/local/bin/rebar`
-  
 
 # Rebar templates for generating custom couchdb releases 
 
